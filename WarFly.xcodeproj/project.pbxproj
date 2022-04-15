@@ -11,7 +11,6 @@
 		8D27C1CD28042E66007C7847 /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D27C1CC28042E66007C7847 /* GreenPowerUp.atlas */; };
 		8D27C1CF2804AB70007C7847 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27C1CE2804AB70007C7847 /* Enemy.swift */; };
 		8D27C1D12804AC04007C7847 /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D27C1D02804AC04007C7847 /* Enemy_1.atlas */; };
-		8D3114712806D1EE00AE82BD /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D3114702806D1EE00AE82BD /* Enemy_2.atlas */; };
 		8D3114732806D78800AE82BD /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D3114722806D78800AE82BD /* BluePowerUp.atlas */; };
 		8D3114752806DC1600AE82BD /* BluePowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114742806DC1600AE82BD /* BluePowerUp.swift */; };
 		8D3114772806DC2200AE82BD /* GreenPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114762806DC2200AE82BD /* GreenPowerUp.swift */; };
@@ -27,6 +26,7 @@
 		8DDBA39927D281C3001B0280 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA39827D281C3001B0280 /* PlayerPlane.swift */; };
 		8DDBA39B27D28298001B0280 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8DDBA39A27D28298001B0280 /* PlayerPlane.atlas */; };
 		8DDBA39D27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA39C27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift */; };
+		95F2E4C82809AB3C00BD4B09 /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95F2E4C72809AB3C00BD4B09 /* Enemy_2.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,6 @@
 		8D27C1CC28042E66007C7847 /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 		8D27C1CE2804AB70007C7847 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		8D27C1D02804AC04007C7847 /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
-		8D3114702806D1EE00AE82BD /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Enemy_2.atlas; path = "../../../../Курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/Enemy_2.atlas"; sourceTree = "<group>"; };
 		8D3114722806D78800AE82BD /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = "<group>"; };
 		8D3114742806DC1600AE82BD /* BluePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePowerUp.swift; sourceTree = "<group>"; };
 		8D3114762806DC2200AE82BD /* GreenPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPowerUp.swift; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		8DDBA39827D281C3001B0280 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		8DDBA39A27D28298001B0280 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
 		8DDBA39C27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "protocol GameBackgroundSpritable + Extension.swift"; sourceTree = "<group>"; };
+		95F2E4C72809AB3C00BD4B09 /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Enemy_2.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/Enemy_2.atlas"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +114,8 @@
 				8DDBA38527D262BE001B0280 /* Main.storyboard */,
 				8DDBA38827D262C3001B0280 /* Assets.xcassets */,
 				8DDBA38A27D262C3001B0280 /* LaunchScreen.storyboard */,
+				95F2E4C72809AB3C00BD4B09 /* Enemy_2.atlas */,
 				8D3114722806D78800AE82BD /* BluePowerUp.atlas */,
-				8D3114702806D1EE00AE82BD /* Enemy_2.atlas */,
 				8D27C1D02804AC04007C7847 /* Enemy_1.atlas */,
 				8D27C1CC28042E66007C7847 /* GreenPowerUp.atlas */,
 				8DDBA39A27D28298001B0280 /* PlayerPlane.atlas */,
@@ -181,7 +181,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D3114712806D1EE00AE82BD /* Enemy_2.atlas in Resources */,
 				8D27C1D12804AC04007C7847 /* Enemy_1.atlas in Resources */,
 				8DDBA38727D262BE001B0280 /* Main.storyboard in Resources */,
 				8D27C1CD28042E66007C7847 /* GreenPowerUp.atlas in Resources */,
@@ -189,6 +188,7 @@
 				8DDBA38927D262C3001B0280 /* Assets.xcassets in Resources */,
 				8D3114732806D78800AE82BD /* BluePowerUp.atlas in Resources */,
 				8DDBA38C27D262C3001B0280 /* LaunchScreen.storyboard in Resources */,
+				95F2E4C82809AB3C00BD4B09 /* Enemy_2.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
