@@ -30,15 +30,17 @@ class PlayerPlane: SKSpriteNode {
     //MARK: створення самольота
     //Створюємо самольот
     static func populate(at point: CGPoint) -> PlayerPlane {
+        //Виклечимо підгружений атлас
+        let atlas = Assets.shared.playerPlaneAtlas
         //Створюємо текстуру:
-        let pleyerPlaneTexture = SKTexture(imageNamed: "airplane_3ver2_13")
+        let pleyerPlaneTexture = atlas.textureNamed("airplane_3ver2_13") //SKTexture(imageNamed: "airplane_3ver2_13")
         //Створюємо сам самольот:
         let playerPlane = PlayerPlane(texture: pleyerPlaneTexture)
         //Зменшим наше зображення:
         playerPlane.setScale(0.5)
         //Задааємо координати:
         playerPlane.position = point
-        playerPlane.zPosition = 20
+        playerPlane.zPosition = 10
         
         return playerPlane
     }

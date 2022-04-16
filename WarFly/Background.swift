@@ -12,6 +12,8 @@ class Background: SKSpriteNode {
     static func populateBackground(at point: CGPoint) -> Background {
         //Задаємо background фон:
         let background = Background(imageNamed: "background")
+        //розмір фону
+        background.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         //Де він буде знаходитись:
         background.position = point
         //Це для того щоб нижній обєкт не був зверху:

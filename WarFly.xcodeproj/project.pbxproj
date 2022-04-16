@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D27C1CB28042CEA007C7847 /* PowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27C1CA28042CEA007C7847 /* PowerUp.swift */; };
-		8D27C1CD28042E66007C7847 /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D27C1CC28042E66007C7847 /* GreenPowerUp.atlas */; };
 		8D27C1CF2804AB70007C7847 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D27C1CE2804AB70007C7847 /* Enemy.swift */; };
-		8D27C1D12804AC04007C7847 /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D27C1D02804AC04007C7847 /* Enemy_1.atlas */; };
-		8D3114732806D78800AE82BD /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8D3114722806D78800AE82BD /* BluePowerUp.atlas */; };
 		8D3114752806DC1600AE82BD /* BluePowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114742806DC1600AE82BD /* BluePowerUp.swift */; };
 		8D3114772806DC2200AE82BD /* GreenPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114762806DC2200AE82BD /* GreenPowerUp.swift */; };
 		8DDBA37C27D262BE001B0280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA37B27D262BE001B0280 /* AppDelegate.swift */; };
@@ -24,17 +21,21 @@
 		8DDBA39527D2699B001B0280 /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA39427D2699B001B0280 /* Island.swift */; };
 		8DDBA39727D27268001B0280 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA39627D27268001B0280 /* Cloud.swift */; };
 		8DDBA39927D281C3001B0280 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA39827D281C3001B0280 /* PlayerPlane.swift */; };
-		8DDBA39B27D28298001B0280 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8DDBA39A27D28298001B0280 /* PlayerPlane.atlas */; };
 		8DDBA39D27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDBA39C27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift */; };
-		95F2E4C82809AB3C00BD4B09 /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95F2E4C72809AB3C00BD4B09 /* Enemy_2.atlas */; };
+		95205BDC280AF72600D8B1D1 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BDB280AF72600D8B1D1 /* PlayerPlane.atlas */; };
+		95205BDE280AF74000D8B1D1 /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BDD280AF74000D8B1D1 /* GreenPowerUp.atlas */; };
+		95205BE0280AF74600D8B1D1 /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BDF280AF74600D8B1D1 /* BluePowerUp.atlas */; };
+		95205BE2280AF74C00D8B1D1 /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BE1280AF74C00D8B1D1 /* Enemy_1.atlas */; };
+		95205BE4280AF75100D8B1D1 /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BE3280AF75100D8B1D1 /* Enemy_2.atlas */; };
+		95205BE6280AF75800D8B1D1 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BE5280AF75800D8B1D1 /* YellowAmmo.atlas */; };
+		95205BE8280AF7D300D8B1D1 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BE7280AF7D300D8B1D1 /* Shot.swift */; };
+		95205BEA280B006900D8B1D1 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BE9280B006900D8B1D1 /* YellowShot.swift */; };
+		95205BED280B298000D8B1D1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BEC280B298000D8B1D1 /* Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D27C1CA28042CEA007C7847 /* PowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUp.swift; sourceTree = "<group>"; };
-		8D27C1CC28042E66007C7847 /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 		8D27C1CE2804AB70007C7847 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
-		8D27C1D02804AC04007C7847 /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
-		8D3114722806D78800AE82BD /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = "<group>"; };
 		8D3114742806DC1600AE82BD /* BluePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePowerUp.swift; sourceTree = "<group>"; };
 		8D3114762806DC2200AE82BD /* GreenPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPowerUp.swift; sourceTree = "<group>"; };
 		8DDBA37827D262BE001B0280 /* WarFly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WarFly.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,9 +49,16 @@
 		8DDBA39427D2699B001B0280 /* Island.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
 		8DDBA39627D27268001B0280 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		8DDBA39827D281C3001B0280 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
-		8DDBA39A27D28298001B0280 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
 		8DDBA39C27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "protocol GameBackgroundSpritable + Extension.swift"; sourceTree = "<group>"; };
-		95F2E4C72809AB3C00BD4B09 /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Enemy_2.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/Enemy_2.atlas"; sourceTree = "<group>"; };
+		95205BDB280AF72600D8B1D1 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = PlayerPlane.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/PlayerPlane.atlas"; sourceTree = "<group>"; };
+		95205BDD280AF74000D8B1D1 /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GreenPowerUp.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/GreenPowerUp.atlas"; sourceTree = "<group>"; };
+		95205BDF280AF74600D8B1D1 /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = BluePowerUp.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/BluePowerUp.atlas"; sourceTree = "<group>"; };
+		95205BE1280AF74C00D8B1D1 /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Enemy_1.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/Enemy_1.atlas"; sourceTree = "<group>"; };
+		95205BE3280AF75100D8B1D1 /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Enemy_2.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/Enemy_2.atlas"; sourceTree = "<group>"; };
+		95205BE5280AF75800D8B1D1 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = YellowAmmo.atlas; path = "../../курси SwiftBook/[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/YellowAmmo.atlas"; sourceTree = "<group>"; };
+		95205BE7280AF7D300D8B1D1 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
+		95205BE9280B006900D8B1D1 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
+		95205BEC280B298000D8B1D1 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,8 @@
 			children = (
 				8DDBA37B27D262BE001B0280 /* AppDelegate.swift */,
 				8DDBA38127D262BE001B0280 /* GameScene.swift */,
+				95205BEC280B298000D8B1D1 /* Assets.swift */,
+				95205BEB280B28C800D8B1D1 /* Shot */,
 				8D3114792806DDAD00AE82BD /* Objects */,
 				8D3114782806DD5400AE82BD /* PowerUp */,
 				8DDBA39C27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift */,
@@ -114,13 +124,23 @@
 				8DDBA38527D262BE001B0280 /* Main.storyboard */,
 				8DDBA38827D262C3001B0280 /* Assets.xcassets */,
 				8DDBA38A27D262C3001B0280 /* LaunchScreen.storyboard */,
-				95F2E4C72809AB3C00BD4B09 /* Enemy_2.atlas */,
-				8D3114722806D78800AE82BD /* BluePowerUp.atlas */,
-				8D27C1D02804AC04007C7847 /* Enemy_1.atlas */,
-				8D27C1CC28042E66007C7847 /* GreenPowerUp.atlas */,
-				8DDBA39A27D28298001B0280 /* PlayerPlane.atlas */,
+				95205BE5280AF75800D8B1D1 /* YellowAmmo.atlas */,
+				95205BE3280AF75100D8B1D1 /* Enemy_2.atlas */,
+				95205BE1280AF74C00D8B1D1 /* Enemy_1.atlas */,
+				95205BDF280AF74600D8B1D1 /* BluePowerUp.atlas */,
+				95205BDD280AF74000D8B1D1 /* GreenPowerUp.atlas */,
+				95205BDB280AF72600D8B1D1 /* PlayerPlane.atlas */,
 			);
 			path = WarFly;
+			sourceTree = "<group>";
+		};
+		95205BEB280B28C800D8B1D1 /* Shot */ = {
+			isa = PBXGroup;
+			children = (
+				95205BE7280AF7D300D8B1D1 /* Shot.swift */,
+				95205BE9280B006900D8B1D1 /* YellowShot.swift */,
+			);
+			path = Shot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,14 +201,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D27C1D12804AC04007C7847 /* Enemy_1.atlas in Resources */,
 				8DDBA38727D262BE001B0280 /* Main.storyboard in Resources */,
-				8D27C1CD28042E66007C7847 /* GreenPowerUp.atlas in Resources */,
-				8DDBA39B27D28298001B0280 /* PlayerPlane.atlas in Resources */,
+				95205BDE280AF74000D8B1D1 /* GreenPowerUp.atlas in Resources */,
+				95205BDC280AF72600D8B1D1 /* PlayerPlane.atlas in Resources */,
+				95205BE6280AF75800D8B1D1 /* YellowAmmo.atlas in Resources */,
+				95205BE2280AF74C00D8B1D1 /* Enemy_1.atlas in Resources */,
 				8DDBA38927D262C3001B0280 /* Assets.xcassets in Resources */,
-				8D3114732806D78800AE82BD /* BluePowerUp.atlas in Resources */,
+				95205BE0280AF74600D8B1D1 /* BluePowerUp.atlas in Resources */,
 				8DDBA38C27D262C3001B0280 /* LaunchScreen.storyboard in Resources */,
-				95F2E4C82809AB3C00BD4B09 /* Enemy_2.atlas in Resources */,
+				95205BE4280AF75100D8B1D1 /* Enemy_2.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,16 +221,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DDBA38227D262BE001B0280 /* GameScene.swift in Sources */,
+				95205BEA280B006900D8B1D1 /* YellowShot.swift in Sources */,
 				8DDBA39927D281C3001B0280 /* PlayerPlane.swift in Sources */,
 				8DDBA39727D27268001B0280 /* Cloud.swift in Sources */,
 				8DDBA38427D262BE001B0280 /* GameViewController.swift in Sources */,
 				8D3114752806DC1600AE82BD /* BluePowerUp.swift in Sources */,
 				8DDBA39D27D28F7A001B0280 /* protocol GameBackgroundSpritable + Extension.swift in Sources */,
 				8DDBA37C27D262BE001B0280 /* AppDelegate.swift in Sources */,
+				95205BED280B298000D8B1D1 /* Assets.swift in Sources */,
 				8D27C1CF2804AB70007C7847 /* Enemy.swift in Sources */,
 				8D3114772806DC2200AE82BD /* GreenPowerUp.swift in Sources */,
 				8DDBA39527D2699B001B0280 /* Island.swift in Sources */,
 				8D27C1CB28042CEA007C7847 /* PowerUp.swift in Sources */,
+				95205BE8280AF7D300D8B1D1 /* Shot.swift in Sources */,
 				8DDBA39327D26580001B0280 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +392,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,6 +422,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

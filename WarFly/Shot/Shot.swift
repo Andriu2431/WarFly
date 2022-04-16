@@ -1,15 +1,18 @@
 //
-//  PowerUp.swift
+//  Shot.swift
 //  WarFly
 //
-//  Created by Andriu on 11.04.2022.
+//  Created by Andriy on 16.04.2022.
 //
 
 import SpriteKit
 
-class PowerUp: SKSpriteNode {
+class Shot: SKSpriteNode {
+    //Розмір екрану
+    let screanSize = UIScreen.main.bounds
 
-    fileprivate let initialSize = CGSize(width: 52, height: 52)
+    //Розмір картинки 
+    fileprivate let initialSize = CGSize(width: 187, height: 237)
     fileprivate let textureAtlas: SKTextureAtlas!
     fileprivate var textureNameBeginsWith = ""
     fileprivate var animationSpriteArray = [SKTexture]()
@@ -25,16 +28,16 @@ class PowerUp: SKSpriteNode {
         textureNameBeginsWith = String(textureName.dropLast(6))
         super.init(texture: texture, color: .clear, size: initialSize)
         //Змінимо маштаб
-        self.setScale(0.7)
-        self.name = "sprite"
-        self.zPosition = 11
+        self.setScale(0.3)
+        self.name = "shotSprite"
+        self.zPosition = 7
     }
     
     //Метод який реалізує рух з верху до низу
     func startMovment() {
          performRotation()
-        //Від верху до точки -100 за 5 сек
-        let moveForward = SKAction.moveTo(y: -100, duration: 5)
+        //На 100 поінтів вище екрану
+        let moveForward = SKAction.moveTo(y: screanSize.height + 100, duration: 2)
         self.run(moveForward)
     }
     
@@ -42,7 +45,7 @@ class PowerUp: SKSpriteNode {
     //Метод який реалізує анімацію
    fileprivate func performRotation() {
         //Перебераємо наші фото та поміщаємо їх в масив
-        for i in 1...15 {
+        for i in 1...32 {
             let number = String(format: "%02d", i)
             //Добавляємо в масив нове значення
             animationSpriteArray.append(SKTexture(imageNamed: textureNameBeginsWith + number.description))
@@ -59,3 +62,4 @@ class PowerUp: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

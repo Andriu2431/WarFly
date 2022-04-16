@@ -21,7 +21,7 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
        cloud.position = point ?? randomPoint()
        //zPosition - величина відносно батька(тобто ми вище ніж фон):
        //Тут ми зробили так щоб одні йшли під самольотом а другі над:
-       let randomCloud = GKRandomDistribution(lowestValue: 18, highestValue: 21)
+       let randomCloud = GKRandomDistribution(lowestValue: 6, highestValue: 11)
        let randomCloudCGFloat = CGFloat(randomCloud.nextInt())
        cloud.zPosition = randomCloudCGFloat
        cloud.name = "sprite"

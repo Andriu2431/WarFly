@@ -42,8 +42,8 @@ class GameScene: SKScene {
             
             self.addChild(powerUp)
         }
-        //Час буде рандомний
-        let randomTimeSpawn = Double(arc4random_uniform(10))
+        //Час на спавн буде рандомний
+        let randomTimeSpawn = Double(arc4random_uniform(11) + 10)
         //Задамо час через який вони будуть спавнитись
         let waitAction = SKAction.wait(forDuration: randomTimeSpawn)
         
@@ -67,9 +67,9 @@ class GameScene: SKScene {
     //MARK: спавнимо ворогів, кількість
     fileprivate func spawnSpiralOfEnemis() {
         //Загружаємо атлас1 картинок ворогів
-        let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy_1")
+        let enemyTextureAtlas1 = Assets.shared.enemy_1Atlas //SKTextureAtlas(named: "Enemy_1")
         //Загружаємо атлас2 картинок ворогів
-        let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy_2")
+        let enemyTextureAtlas2 = Assets.shared.enemy_2Atlas //SKTextureAtlas(named: "Enemy_2")
         SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
             
             //Беремо рандомне число
@@ -168,14 +168,40 @@ class GameScene: SKScene {
         //Викликаємо метод який перевіряє позицію
         player.checkPosition()
         
-        //Перебирає ноди з іменем(зробим перевірку, якщо ноди по у = менше 0 то просто будем їх видаляти):
+        //Перебирає ноди з іменем(зробим перевірку, якщо ноди по у = менше -100 то просто будем їх видаляти):
         enumerateChildNodes(withName: "sprite") { (node, stop) in
-            if node.position.y < -100 {
+            if node.position.y <= -100 {
+                node.removeFromParent()
+                //Перевіримо чи будуть пони видалятись
+//                if node.isKind(of: PowerUp.self) {
+//                    print("PowerUp is removed from scene")
+//                }
+            }
+        }
+        
+        //Перебирає ноди з іменем(зробим перевірку, якщо ноди по у = більше 100 поінтів то просто будем їх видаляти):
+        enumerateChildNodes(withName: "shotSprite") { (node, stop) in
+            if node.position.y >= self.size.height + 100 {
                 node.removeFromParent()
             }
         }
+    }
+    
+    //Метод який буде створювати вистріл
+    fileprivate func playerFire() {
+        let shot = YellowShot()
+        //Вистріл співпадатиме з позицією ігрока
+        shot.position = self.player.position
+        shot.startMovment()
+        self.addChild(shot)
+    }
+    
+    //При доторканні до екрану викликаємо вистріл
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        playerFire()
     }
 }
 
 //anchorPoint - початкові координати
 //OperationQueue.current! - це про багатопоточність
+

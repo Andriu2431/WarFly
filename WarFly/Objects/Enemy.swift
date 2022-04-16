@@ -17,7 +17,7 @@ class Enemy: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: CGSize(width: 221, height: 224))
         self.xScale = 0.5
         self.yScale = -0.5
-        self.zPosition = 20
+        self.zPosition = 9
         self.name = "sprite"
     }
     
