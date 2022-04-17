@@ -187,6 +187,7 @@ class GameScene: SKScene {
         }
     }
     
+    //MARK: вистріл
     //Метод який буде створювати вистріл
     fileprivate func playerFire() {
         let shot = YellowShot()
