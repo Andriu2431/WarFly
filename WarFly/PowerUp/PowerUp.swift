@@ -14,6 +14,7 @@ class PowerUp: SKSpriteNode {
     fileprivate var textureNameBeginsWith = ""
     fileprivate var animationSpriteArray = [SKTexture]()
     
+    //MARK: Ініціалізатор
     init (textureAtlas: SKTextureAtlas) {
         //То що прийде сюди присвоюємо свойству
         self.textureAtlas = textureAtlas
@@ -28,8 +29,22 @@ class PowerUp: SKSpriteNode {
         self.setScale(0.7)
         self.name = "sprite"
         self.zPosition = 11
+        
+        //Створимо самольоту фізичне тіло та задамо якісь свойства:
+        
+        //Присвоюємо бітову маску
+        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        //Скажемо що ми будемо динамічні
+        self.physicsBody?.isDynamic = true
+        //Присвоїмо катигорію бітових масків
+        self.physicsBody?.categoryBitMask = BitMaskCategory.powerUp.rawValue
+        //Вказуємо бітові маски катигорій з якими ми будемо доторкатись
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue
+        //Зарейструємо доторкання
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue
     }
     
+    //MARK: Реалізація руху
     //Метод який реалізує рух з верху до низу
     func startMovment() {
          performRotation()
@@ -39,7 +54,8 @@ class PowerUp: SKSpriteNode {
     }
     
     
-    //Метод який реалізує анімацію
+    //MARK: Анімація
+   //Метод який реалізує анімацію
    fileprivate func performRotation() {
         //Перебераємо наші фото та поміщаємо їх в масив
         for i in 1...15 {

@@ -32,6 +32,7 @@
 		95205BF7280C116F00D8B1D1 /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BF6280C116F00D8B1D1 /* BluePowerUp.atlas */; };
 		95205BF9280C117D00D8B1D1 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 95205BF8280C117D00D8B1D1 /* YellowAmmo.atlas */; };
 		95205BFC280C3A9400D8B1D1 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BFB280C3A9400D8B1D1 /* MenuScene.swift */; };
+		95205C00280C597700D8B1D1 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BFF280C597700D8B1D1 /* BitMaskCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		95205BF6280C116F00D8B1D1 /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = BluePowerUp.atlas; path = "../../Курси SwiftBook /[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/BluePowerUp.atlas"; sourceTree = "<group>"; };
 		95205BF8280C117D00D8B1D1 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = YellowAmmo.atlas; path = "../../Курси SwiftBook /[sharewood.biz] 13. Курс Фреймворк Для Создания Игр SpriteKit/Конечный проект/YellowAmmo.atlas"; sourceTree = "<group>"; };
 		95205BFB280C3A9400D8B1D1 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		95205BFF280C597700D8B1D1 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				8DDBA37B27D262BE001B0280 /* AppDelegate.swift */,
+				95205C01280C70A000D8B1D1 /* BitMask */,
 				95205BFD280C406400D8B1D1 /* Scene */,
 				95205BFA280C39EF00D8B1D1 /* DownloadAtlases */,
 				95205BEB280B28C800D8B1D1 /* Shot */,
@@ -168,6 +171,14 @@
 				8DDBA38327D262BE001B0280 /* GameViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		95205C01280C70A000D8B1D1 /* BitMask */ = {
+			isa = PBXGroup;
+			children = (
+				95205BFF280C597700D8B1D1 /* BitMaskCategory.swift */,
+			);
+			path = BitMask;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 				8D3114772806DC2200AE82BD /* GreenPowerUp.swift in Sources */,
 				8DDBA39527D2699B001B0280 /* Island.swift in Sources */,
 				8D27C1CB28042CEA007C7847 /* PowerUp.swift in Sources */,
+				95205C00280C597700D8B1D1 /* BitMaskCategory.swift in Sources */,
 				95205BFC280C3A9400D8B1D1 /* MenuScene.swift in Sources */,
 				95205BE8280AF7D300D8B1D1 /* Shot.swift in Sources */,
 				8DDBA39327D26580001B0280 /* Background.swift in Sources */,

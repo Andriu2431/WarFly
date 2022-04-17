@@ -42,6 +42,19 @@ class PlayerPlane: SKSpriteNode {
         playerPlane.position = point
         playerPlane.zPosition = 10
         
+        //Створимо самольоту фізичне тіло та задамо якісь свойства:
+        
+        //Присвоюємо бітову маску
+        playerPlane.physicsBody = SKPhysicsBody(texture: pleyerPlaneTexture, alphaThreshold: 0.5, size: playerPlane.size)
+        //Скажемо що ми не будемо динамічні
+        playerPlane.physicsBody?.isDynamic = false
+        //Присвоїмо катигорію бітових масків
+        playerPlane.physicsBody?.categoryBitMask = BitMaskCategory.player.rawValue
+        //Вказуємо бітові маски катигорій з якими ми будемо доторкатись
+        playerPlane.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue | BitMaskCategory.powerUp.rawValue
+        //Зарейструємо доторкання
+        playerPlane.physicsBody?.contactTestBitMask = BitMaskCategory.enemy.rawValue | BitMaskCategory.powerUp.rawValue
+        
         return playerPlane
     }
     

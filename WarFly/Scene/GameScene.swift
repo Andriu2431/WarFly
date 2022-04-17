@@ -14,6 +14,12 @@ class GameScene: SKScene {
     
     //MARK: при запуску апп
     override func didMove(to view: SKView) {
+        
+        //Протокол який рейструє доторкання, реалізуємо в розширенні
+        physicsWorld.contactDelegate = self
+        //Силу гравітації прирівнюємо до нуля
+        physicsWorld.gravity = CGVector.zero
+        
         configureStartScene()
         spawnClouds()
         spawnIslands()
@@ -203,6 +209,47 @@ class GameScene: SKScene {
     }
 }
 
+//MARK: Розширення для дотиків
+//SKPhysicsContactDelegate - рейструє доторкання
+extension GameScene: SKPhysicsContactDelegate {
+    
+    //Початок доторкання
+    func didBegin(_ contact: SKPhysicsContact) {
+        //Оприділяємо катигорію
+        let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
+        switch contactCategory {
+        case [.enemy, .player]: print("enemy vs player")
+        case [.powerUp, .player]: print("powerUp vs player")
+        case [.enemy, .shot]: print("enemy vs shot")
+        default: preconditionFailure("Unable to detect collision category")
+        }
+    }
+    
+    //Кінець доторкання
+    func didEnd(_ contact: SKPhysicsContact) {
+        
+    }
+}
+
+
+
 //anchorPoint - початкові координати
 //OperationQueue.current! - це про багатопоточність
 
+/* ось ці зміни з масками в методі didBegin
+//Перевіряємо які бітові маски доторкаються
+let bodyA = contact.bodyA.categoryBitMask
+let bodyB = contact.bodyB.categoryBitMask
+let player = BitMaskCategory.player
+let enemy = BitMaskCategory.enemy
+let shot = BitMaskCategory.shot
+let powerUp = BitMaskCategory.powerUp
+
+//Перевіримо що доторкається
+if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
+    print("enemy vs player")
+}else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
+    print("powerUp vs player")
+}else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
+    print("enemy vs shot")
+}*/

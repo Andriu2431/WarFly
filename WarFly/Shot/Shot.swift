@@ -17,6 +17,7 @@ class Shot: SKSpriteNode {
     fileprivate var textureNameBeginsWith = ""
     fileprivate var animationSpriteArray = [SKTexture]()
     
+    //MARK: Ініціалізатор
     init (textureAtlas: SKTextureAtlas) {
         //То що прийде сюди присвоюємо свойству
         self.textureAtlas = textureAtlas
@@ -31,8 +32,22 @@ class Shot: SKSpriteNode {
         self.setScale(0.3)
         self.name = "shotSprite"
         self.zPosition = 7
+        
+        //Створимо самольоту фізичне тіло та задамо якісь свойства:
+        
+        //Присвоюємо бітову маску
+        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        //Скажемо що ми не будемо динамічні
+        self.physicsBody?.isDynamic = false
+        //Присвоїмо катигорію бітових масків
+        self.physicsBody?.categoryBitMask = BitMaskCategory.shot.rawValue
+        //Вказуємо бітові маски катигорій з якими ми будемо доторкатись
+        self.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue
+        //Зарейструємо доторкання
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.enemy.rawValue
     }
     
+    //MARK: Рух пуль
     //Метод який реалізує рух з верху до низу
     func startMovment() {
          performRotation()
@@ -42,7 +57,8 @@ class Shot: SKSpriteNode {
     }
     
     
-    //Метод який реалізує анімацію
+    //MARK: Анімація
+   //Метод який реалізує анімацію
    fileprivate func performRotation() {
         //Перебераємо наші фото та поміщаємо їх в масив
         for i in 1...32 {

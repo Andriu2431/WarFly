@@ -12,6 +12,7 @@ class Enemy: SKSpriteNode {
     static var textureAtlas: SKTextureAtlas?
     var enemyTexture: SKTexture!
     
+    //MARK: Ініціалізатор
     init(enemyTexture: SKTexture) {
         let texture = enemyTexture
         super.init(texture: texture, color: .clear, size: CGSize(width: 221, height: 224))
@@ -19,6 +20,19 @@ class Enemy: SKSpriteNode {
         self.yScale = -0.5
         self.zPosition = 9
         self.name = "sprite"
+        
+        //Створимо самольоту фізичне тіло та задамо якісь свойства:
+        
+        //Присвоюємо бітову маску
+        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        //Скажемо що ми будемо динамічні
+        self.physicsBody?.isDynamic = true
+        //Присвоїмо катигорію бітових масків
+        self.physicsBody?.categoryBitMask = BitMaskCategory.enemy.rawValue
+        //Вказуємо бітові маски катигорій з якими ми будемо доторкатись
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
+        //Зарейструємо доторкання
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
     }
     
     //MARK: політ по спіралі
