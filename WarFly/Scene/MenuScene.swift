@@ -11,6 +11,8 @@ import SpriteKit
 class MenuScene: SKScene {
 
     override func didMove(to view: SKView) {
+        //Підгружаємо всі атласи - якщо не було б цієї сцени то підгружали б в AppDelegate
+        Assets.shared.preloadAssets()
         //Колір сцени
         self.backgroundColor = SKColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
         //Фото кнопки

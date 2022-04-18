@@ -14,10 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //Підгружаємо всі атласи
-        Assets.shared.preloadAssets()
-        
+        //Підгружаємо всі атласи - це потрібно б було тоді коли ми не робили підгрузку атласів на першій сцені, а зара воно непотрібне в нас атласи загружаються коли ми загружаємо першу сцену з паузою
+//        Assets.shared.preloadAssets()
         return true
     }
 
