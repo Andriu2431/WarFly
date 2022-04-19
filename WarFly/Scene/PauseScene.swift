@@ -1,37 +1,28 @@
 //
-//  MenuScene.swift
+//  PauseScene.swift
 //  WarFly
 //
-//  Created by Andriy on 17.04.2022.
+//  Created by Andriy on 19.04.2022.
 //
 
 import SpriteKit
 
-//Типу меню перед запуском ігри, в GameViewController запустимо цю сцену першою
-class MenuScene: SKScene {
+class PauseScene: SKScene {
 
     override func didMove(to view: SKView) {
-        
-        //Зробимо так щоб атласи загружались лише один раз при запуску, а не кожного разу коли відкриваємо меню
-        if !Assets.shared.isLoaded {
-            //Підгружаємо всі атласи - якщо не було б цієї сцени то підгружали б в AppDelegate
-            Assets.shared.preloadAssets()
-            //Змінимо на true, для того щоб ми більше сюди не попали
-            Assets.shared.isLoaded = true
-        }
         
         //MARK: Заголовок
         //Колір сцени
         self.backgroundColor = SKColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
-        //Фото1
-        let heder = SKSpriteNode(imageNamed: "header1")
+        //Кнопка
+        let heder = ButtonNode(titled: "pause", backgroundName: "header_background")
         //Розміщення кнопки(середина по х, середина по у + 150)
         heder.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
         self.addChild(heder)
         
         //MARK: 3 Кнопки
         //Створимо масив titles
-        let titles = ["play", "options", "best"]
+        let titles = ["restart", "options", "resume"]
         
         for(index, title) in titles.enumerated() {
             //Фото(кнопка) - titled(це текст кнопки), backgroundName - це фон.
@@ -48,7 +39,7 @@ class MenuScene: SKScene {
     }
     
     //MARK: touchesBegan
-    //Спрацьовує при доторканні на екран
+    //    Спрацьовує при доторканні на екран
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Беремо точку доторкання(first - перше доторкання, self - координати відносно цієї сцени)
         let location = touches.first!.location(in: self)
@@ -56,7 +47,7 @@ class MenuScene: SKScene {
         let node = self.atPoint(location)
         
         //Перевіримо чи прийшов нод нашої кнопки
-        if node.name == "play" {
+        if node.name == "restart" {
             //Якщо так то робимо перехід до іншої сцени
             let transition = SKTransition.crossFade(withDuration: 1)
             //Створимо ту сцену на яку будемо переходити
@@ -68,3 +59,4 @@ class MenuScene: SKScene {
         }
     }
 }
+
