@@ -8,6 +8,8 @@
 import SpriteKit
 
 class PauseScene: SKScene {
+    
+    let sceneManager = SceneManager.shared
 
     override func didMove(to view: SKView) {
         
@@ -38,8 +40,18 @@ class PauseScene: SKScene {
         
     }
     
+    //MARK: update
+    override func update(_ currentTime: TimeInterval) {
+        //Перевіряємо, якщо сцена не на паузі то ставимо її на паузу
+        if let gameScene = sceneManager.gameScene {
+            if gameScene.isPaused == false {
+                gameScene.isPaused = true
+            }
+        }
+    }
+    
     //MARK: touchesBegan
-    //    Спрацьовує при доторканні на екран
+    //Спрацьовує при доторканні на екран
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Беремо точку доторкання(first - перше доторкання, self - координати відносно цієї сцени)
         let location = touches.first!.location(in: self)
@@ -48,6 +60,8 @@ class PauseScene: SKScene {
         
         //Перевіримо чи прийшов нод нашої кнопки
         if node.name == "restart" {
+            //Перед тим видаляємо сцену з менеджера
+            sceneManager.gameScene = nil
             //Якщо так то робимо перехід до іншої сцени
             let transition = SKTransition.crossFade(withDuration: 1)
             //Створимо ту сцену на яку будемо переходити
@@ -56,6 +70,15 @@ class PauseScene: SKScene {
             gameScene.scaleMode = .aspectFit
             //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
             self.scene?.view?.presentScene(gameScene, transition: transition)
+        } else if node.name == "resume"{
+            //Якщо так то робимо перехід до іншої сцени
+            let transition = SKTransition.crossFade(withDuration: 1)
+            //Робимо повернення до сцени на якій були, але через гуард бо вона опціональна
+            guard let gameScene = sceneManager.gameScene else { return }
+            //Як вона буде відтворюватись
+            gameScene.scaleMode = .aspectFit
+            //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
+            self.scene!.view?.presentScene(gameScene, transition: transition)
         }
     }
 }

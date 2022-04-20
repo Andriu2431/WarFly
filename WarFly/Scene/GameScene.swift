@@ -10,6 +10,9 @@ import GameplayKit
 
 class GameScene: SKScene {
 
+    //Получаємо силку на наш екземпляр класу
+    let sceneManager = SceneManager.shared
+    
     fileprivate var player: PlayerPlane!
     //Екземпляр
     fileprivate let hud = HUD()
@@ -18,6 +21,14 @@ class GameScene: SKScene {
     
     //MARK: при запуску апп
     override func didMove(to view: SKView) {
+        //Знімаємо паузу всіх обєктів
+        self.scene?.isPaused = false
+        
+        //Робимо перевірку чи ця сцена вже створена
+        guard sceneManager.gameScene == nil else { return }
+        
+        //Зберігаємо нашу сцену в SceneManager
+        sceneManager.gameScene = self
         
         //Протокол який рейструє доторкання, реалізуємо в розширенні
         physicsWorld.contactDelegate = self
@@ -232,6 +243,10 @@ class GameScene: SKScene {
             let pauseScene = PauseScene(size: self.size)
             //Як вона буде відтворюватись
             pauseScene.scaleMode = .aspectFit
+            //Зберігаємо стан нашої сцени в менеджер, для того щоб потім викликати цю сцену
+            sceneManager.gameScene = self
+            //Ставимо на паузу всю сцену
+            self.scene?.isPaused = true
             //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
             self.scene?.view?.presentScene(pauseScene, transition: transition)
         } else {
