@@ -7,20 +7,14 @@
 
 import SpriteKit
 
-class PauseScene: SKScene {
+class PauseScene: ParentScene {
     
-    let sceneManager = SceneManager.shared
-
+    
     override func didMove(to view: SKView) {
         
         //MARK: Заголовок
-        //Колір сцени
-        self.backgroundColor = SKColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
-        //Кнопка
-        let heder = ButtonNode(titled: "pause", backgroundName: "header_background")
-        //Розміщення кнопки(середина по х, середина по у + 150)
-        heder.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-        self.addChild(heder)
+        //Робимо заголовок(передаємо текст та фото)
+        setHeader(withName: "pause", endBackground: "header_background")
         
         //MARK: 3 Кнопки
         //Створимо масив titles
@@ -37,7 +31,6 @@ class PauseScene: SKScene {
             button.label.name = title
             addChild(button)
         }
-        
     }
     
     //MARK: update
@@ -53,6 +46,7 @@ class PauseScene: SKScene {
     //MARK: touchesBegan
     //Спрацьовує при доторканні на екран
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         //Беремо точку доторкання(first - перше доторкання, self - координати відносно цієї сцени)
         let location = touches.first!.location(in: self)
         //Получаємо нод по тій точці де натиснули
@@ -70,7 +64,21 @@ class PauseScene: SKScene {
             gameScene.scaleMode = .aspectFit
             //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
             self.scene?.view?.presentScene(gameScene, transition: transition)
-        } else if node.name == "resume"{
+            
+        } else if node.name == "options" {
+            //Якщо так то робимо перехід до іншої сцени
+            let transition = SKTransition.crossFade(withDuration: 1)
+            //Розмір нової сцени буде такий який і в нашої сцени
+            let optionsScene = OptionsScene(size: self.size)
+            //Сцена на на яку зможемо вернутись, буде тою на якій ми натиснули на options(ця сцена)
+            optionsScene.backScene = self
+            //Як вона буде відтворюватись
+            optionsScene.scaleMode = .aspectFit
+            //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
+            self.scene!.view?.presentScene(optionsScene, transition: transition)
+            
+        } else if node.name == "resume" {
+            
             //Якщо так то робимо перехід до іншої сцени
             let transition = SKTransition.crossFade(withDuration: 1)
             //Робимо повернення до сцени на якій були, але через гуард бо вона опціональна

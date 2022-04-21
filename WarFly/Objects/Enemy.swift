@@ -30,8 +30,8 @@ class Enemy: SKSpriteNode {
         self.physicsBody?.isDynamic = true
         //Присвоїмо катигорію бітових масків
         self.physicsBody?.categoryBitMask = BitMaskCategory.enemy.rawValue
-        //Вказуємо бітові маски катигорій з якими ми будемо доторкатись
-        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
+        //Вказуємо бітові маски, та говоримо щоб дій не було ніяких а лише рейстрація доторкання
+        self.physicsBody?.collisionBitMask = BitMaskCategory.none.rawValue
         //Зарейструємо доторкання
         self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
     }

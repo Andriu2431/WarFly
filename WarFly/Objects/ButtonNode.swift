@@ -13,7 +13,7 @@ class ButtonNode: SKSpriteNode {
     //Створюємо ярлик
     let label: SKLabelNode = {
         //Клоужер просто потрібен для того щоб потім задати якісь настройки лейблу)
-        let l = SKLabelNode(text: "whatever")
+        let l = SKLabelNode(text: "")
         //Задамо колір шрифту
         l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
         //Шрифт
@@ -28,12 +28,14 @@ class ButtonNode: SKSpriteNode {
         return l
     }()
     
-    init(titled title: String, backgroundName: String) {
+    init(titled title: String?, backgroundName: String) {
         //Створюємо текстуру, фото візьмемо те яке передамо сюди
         let texture = SKTexture(imageNamed: backgroundName)
         super.init(texture: texture, color: .clear, size: texture.size())
-        //Текст буде на текстурі той, який передамо в лейбел(Всі букви будуть великі)
-        label.text = title.uppercased()
+        if let title = title {
+            //Текст буде на текстурі той, який передамо в лейбел(Всі букви будуть великі)
+            label.text = title.uppercased() 
+        }
         addChild(label)
     }
     

@@ -8,10 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
-
-    //Получаємо силку на наш екземпляр класу
-    let sceneManager = SceneManager.shared
+class GameScene: ParentScene {
     
     fileprivate var player: PlayerPlane!
     //Екземпляр
@@ -260,14 +257,60 @@ class GameScene: SKScene {
 //SKPhysicsContactDelegate - рейструє доторкання
 extension GameScene: SKPhysicsContactDelegate {
     
+    //MARK: didBegin
     //Початок доторкання
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        //Створюємо взрив
+        let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
+        //Шукаємо точку доторку, пулі та ворога, або ми та ворог
+        let contectPoint = contact.contactPoint
+        //Взрив створюємо в точці доторку
+        explosion?.position = contectPoint
+        //Чекаємо 1 сек
+        let waitForExplosionAction = SKAction.wait(forDuration: 1.0)
+        
         //Оприділяємо катигорію
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
+        
         switch contactCategory {
-        case [.enemy, .player]: print("enemy vs player")
+            
+        case [.enemy, .player]:
+            print("enemy vs player")
+            
+            //Зробимо так щоб при доторканні до нас, вороги пропадали. Шукаємо ворога, під яким body він буде
+            if contact.bodyA.node?.name == "sprite" {
+                //Якщо це ворог то видаляємо його з екрану
+                contact.bodyA.node?.removeFromParent()
+            } else {
+                //Якщо bodyA не ворог то видаляємо bodyB
+                contact.bodyB.node?.removeFromParent()
+            }
+            //Добавляємо взрив коли буде торкання
+            addChild(explosion!)
+            //Робимо затримку та видаляємо explosion
+            self.run(waitForExplosionAction) {
+                //Видаляємо наш explosion
+                explosion?.removeFromParent()
+            }
+            
         case [.powerUp, .player]: print("powerUp vs player")
-        case [.enemy, .shot]: print("enemy vs shot")
+            
+        case [.enemy, .shot]:
+            print("enemy vs shot")
+            
+            //Якщо попадаємо по ворогові то пуля та ворог пропадають
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            
+            //Добавляємо взрив коли буде торкання
+            addChild(explosion!)
+            //Робимо затримку та видаляємо explosion
+            self.run(waitForExplosionAction) {
+                //Видаляємо наш explosion
+                explosion?.removeFromParent()
+            }
+            
         default: preconditionFailure("Unable to detect collision category")
         }
     }

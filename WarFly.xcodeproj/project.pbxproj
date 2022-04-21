@@ -32,6 +32,11 @@
 		95189D44280F02C3006DD14E /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D43280F02C3006DD14E /* ButtonNode.swift */; };
 		95189D46280F3560006DD14E /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D45280F3560006DD14E /* PauseScene.swift */; };
 		95189D4828100761006DD14E /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D4728100761006DD14E /* SceneManager.swift */; };
+		95189D4A28119B28006DD14E /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D4928119B28006DD14E /* ParentScene.swift */; };
+		95189D4C2811A07A006DD14E /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D4B2811A07A006DD14E /* OptionsScene.swift */; };
+		95189D4E2811C659006DD14E /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D4D2811C659006DD14E /* BestScene.swift */; };
+		95189D512811E84A006DD14E /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95189D4F2811E84A006DD14E /* EnemyExplosion.sks */; };
+		95189D522811E84A006DD14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95189D502811E84A006DD14E /* Assets.xcassets */; };
 		95205BE8280AF7D300D8B1D1 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BE7280AF7D300D8B1D1 /* Shot.swift */; };
 		95205BEA280B006900D8B1D1 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BE9280B006900D8B1D1 /* YellowShot.swift */; };
 		95205BED280B298000D8B1D1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BEC280B298000D8B1D1 /* Assets.swift */; };
@@ -66,6 +71,11 @@
 		95189D43280F02C3006DD14E /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		95189D45280F3560006DD14E /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		95189D4728100761006DD14E /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
+		95189D4928119B28006DD14E /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
+		95189D4B2811A07A006DD14E /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
+		95189D4D2811C659006DD14E /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
+		95189D4F2811E84A006DD14E /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
+		95189D502811E84A006DD14E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95205BE7280AF7D300D8B1D1 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		95205BE9280B006900D8B1D1 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
 		95205BEC280B298000D8B1D1 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -137,6 +147,7 @@
 				95189D42280EFF10006DD14E /* Protocols end Extensions */,
 				95189D41280EFEAD006DD14E /* Supporting files */,
 				95189D3E280D6A4D006DD14E /* Atlas */,
+				95189D532811E85F006DD14E /* Particles */,
 			);
 			path = WarFly;
 			sourceTree = "<group>";
@@ -173,6 +184,15 @@
 			path = "Protocols end Extensions";
 			sourceTree = "<group>";
 		};
+		95189D532811E85F006DD14E /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				95189D4F2811E84A006DD14E /* EnemyExplosion.sks */,
+				95189D502811E84A006DD14E /* Assets.xcassets */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 		95205BEB280B28C800D8B1D1 /* Shot */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,8 +215,11 @@
 			children = (
 				8DDBA38127D262BE001B0280 /* GameScene.swift */,
 				95205BFB280C3A9400D8B1D1 /* MenuScene.swift */,
+				95189D4B2811A07A006DD14E /* OptionsScene.swift */,
+				95189D4D2811C659006DD14E /* BestScene.swift */,
 				95189D45280F3560006DD14E /* PauseScene.swift */,
 				95189D4728100761006DD14E /* SceneManager.swift */,
+				95189D4928119B28006DD14E /* ParentScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -277,10 +300,12 @@
 			files = (
 				95189D38280CD04B006DD14E /* GreenPowerUp.atlas in Resources */,
 				95189D3B280CD04B006DD14E /* BluePowerUp.atlas in Resources */,
+				95189D522811E84A006DD14E /* Assets.xcassets in Resources */,
 				8DDBA38727D262BE001B0280 /* Main.storyboard in Resources */,
 				95189D3D280CD04B006DD14E /* YellowAmmo.atlas in Resources */,
 				8DDBA38927D262C3001B0280 /* Assets.xcassets in Resources */,
 				95189D3A280CD04B006DD14E /* PlayerPlane.atlas in Resources */,
+				95189D512811E84A006DD14E /* EnemyExplosion.sks in Resources */,
 				8DDBA38C27D262C3001B0280 /* LaunchScreen.storyboard in Resources */,
 				95189D39280CD04B006DD14E /* Enemy_1.atlas in Resources */,
 				95189D3C280CD04B006DD14E /* Enemy_2.atlas in Resources */,
@@ -308,13 +333,16 @@
 				8D3114772806DC2200AE82BD /* GreenPowerUp.swift in Sources */,
 				8DDBA39527D2699B001B0280 /* Island.swift in Sources */,
 				8D27C1CB28042CEA007C7847 /* PowerUp.swift in Sources */,
+				95189D4E2811C659006DD14E /* BestScene.swift in Sources */,
 				95205C00280C597700D8B1D1 /* BitMaskCategory.swift in Sources */,
 				95205BFC280C3A9400D8B1D1 /* MenuScene.swift in Sources */,
+				95189D4A28119B28006DD14E /* ParentScene.swift in Sources */,
 				95189D46280F3560006DD14E /* PauseScene.swift in Sources */,
 				95189D40280EFC56006DD14E /* HUD.swift in Sources */,
 				95205BE8280AF7D300D8B1D1 /* Shot.swift in Sources */,
 				8DDBA39327D26580001B0280 /* Background.swift in Sources */,
 				95189D44280F02C3006DD14E /* ButtonNode.swift in Sources */,
+				95189D4C2811A07A006DD14E /* OptionsScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

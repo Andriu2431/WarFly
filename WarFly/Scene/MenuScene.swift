@@ -8,7 +8,7 @@
 import SpriteKit
 
 //Типу меню перед запуском ігри, в GameViewController запустимо цю сцену першою
-class MenuScene: SKScene {
+class MenuScene: ParentScene {
 
     override func didMove(to view: SKView) {
         
@@ -21,13 +21,8 @@ class MenuScene: SKScene {
         }
         
         //MARK: Заголовок
-        //Колір сцени
-        self.backgroundColor = SKColor(red: 0.5, green: 0.6, blue: 0.7, alpha: 1.0)
-        //Фото1
-        let heder = SKSpriteNode(imageNamed: "header1")
-        //Розміщення кнопки(середина по х, середина по у + 150)
-        heder.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-        self.addChild(heder)
+        //Робимо заголовок(передаємо текст та фото)
+        setHeader(withName: nil, endBackground: "header1")
         
         //MARK: 3 Кнопки
         //Створимо масив titles
@@ -57,6 +52,7 @@ class MenuScene: SKScene {
         
         //Перевіримо чи прийшов нод нашої кнопки
         if node.name == "play" {
+            
             //Якщо так то робимо перехід до іншої сцени
             let transition = SKTransition.crossFade(withDuration: 1)
             //Створимо ту сцену на яку будемо переходити
@@ -65,6 +61,26 @@ class MenuScene: SKScene {
             gameScene.scaleMode = .aspectFit
             //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
             self.scene?.view?.presentScene(gameScene, transition: transition)
+            
+        } else if node.name == "options" {
+            //Якщо так то робимо перехід до іншої сцени
+            let transition = SKTransition.crossFade(withDuration: 1)
+            //Розмір нової сцени буде такий який і в нашої сцени
+            let optionsScene = OptionsScene(size: self.size)
+            //Сцена на на яку зможемо вернутись, буде тою на якій ми натиснули на options(ця сцена)
+            optionsScene.backScene = self
+            //Як вона буде відтворюватись
+            optionsScene.scaleMode = .aspectFit
+            //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
+            self.scene!.view?.presentScene(optionsScene, transition: transition)
+            
+        } else if node.name == "best" {
+            
+            let transition = SKTransition.crossFade(withDuration: 1)
+            let bestScene = BestScene(size: self.size)
+            bestScene.backScene = self
+            bestScene.scaleMode = .aspectFit
+            self.scene!.view?.presentScene(bestScene, transition: transition)
         }
     }
 }
