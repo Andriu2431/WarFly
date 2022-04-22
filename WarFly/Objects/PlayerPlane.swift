@@ -175,6 +175,31 @@ class PlayerPlane: SKSpriteNode {
             self.stillTurning = false
         }
     }
+    
+    //MARK: при доторканні до greenPoweUp
+    func greenPoweUp() {
+        //Самольот буде мигати зеленим
+        //Робимо зелений наш самольот
+        let colorAction = SKAction.colorize(with: .green, colorBlendFactor: 1.0, duration: 0.2)
+        //Вертаємо колір назад
+        let uncolorAction = SKAction.colorize(with: .green, colorBlendFactor: 0.0, duration: 0.2)
+        //Додаємо це в sequence
+        let sequenseAction = SKAction.sequence([colorAction, uncolorAction])
+        //Робим послідовність з цього 5 раз
+        let repeatAction = SKAction.repeat(sequenseAction, count: 5)
+        //Запускаємо 
+        self.run(repeatAction)
+    }
+    
+    //MARK: при доторканні до bluePoweUp
+    func bluePoweUp() {
+        //Самольот буде мигати синім
+        let colorAction = SKAction.colorize(with: .blue, colorBlendFactor: 1.0, duration: 0.2)
+        let uncolorAction = SKAction.colorize(with: .blue, colorBlendFactor: 0.0, duration: 0.2)
+        let sequenseAction = SKAction.sequence([colorAction, uncolorAction])
+        let repeatAction = SKAction.repeat(sequenseAction, count: 5)
+        self.run(repeatAction)
+    }
 }
 
 //Енум з поворотами

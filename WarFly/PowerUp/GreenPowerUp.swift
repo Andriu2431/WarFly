@@ -13,6 +13,7 @@ class GreenPowerUp: PowerUp {
         let textureAtlas = Assets.shared.greenPowerUpAtlas //SKTextureAtlas(named: "GreenPowerUp")
         //Передали його в ініціалізатор батька
         super.init(textureAtlas: textureAtlas)
+        name = "greenPowerUp"
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -12,7 +12,14 @@ class HUD: SKNode {
 
     //Створимо всі елементи для UI
     let scoreBackground = SKSpriteNode(imageNamed: "scores")
-    let scoreLabel = SKLabelNode(text: "10000")
+    let scoreLabel = SKLabelNode(text: "0")
+    var score: Int = 0 {
+        //Як тільки ця властивість буде мінятись виконається код в наглядачі
+        didSet {
+            //Ми беремо текст scoreLabel, та в нього поміщаємо значення score в текстовому форматі
+            scoreLabel.text = score.description
+        }
+    }
     let menuButton = SKSpriteNode(imageNamed: "menu")
     let life1 = SKSpriteNode(imageNamed: "life")
     let life2 = SKSpriteNode(imageNamed: "life")

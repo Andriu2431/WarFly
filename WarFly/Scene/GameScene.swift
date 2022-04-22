@@ -16,6 +16,32 @@ class GameScene: ParentScene {
     //Створимо розмір екрану
     fileprivate let screenSize = UIScreen.main.bounds.size
     
+    //Життя ігрока
+    fileprivate var lives = 3 {
+        didSet {
+            //Коли буде мінятись свойство то зробимо конструкцію switch
+            switch lives {
+                //Буде 3 зірки відображатись
+            case 3:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = false
+                //2
+            case 2:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = true
+                //1
+            case 1:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = true
+                hud.life3.isHidden = true
+                
+            default: break
+            }
+        }
+    }
+    
     //MARK: при запуску апп
     override func didMove(to view: SKView) {
         //Знімаємо паузу всіх обєктів
@@ -37,7 +63,7 @@ class GameScene: ParentScene {
         spawnIslands()
         //Викликаєм метод який відповідає за польот
         player.performFly()
-    
+        
         spawnPowerUp()
         //spawnEnemy(count: 5)
         spawnEnemys()
@@ -90,7 +116,7 @@ class GameScene: ParentScene {
         //Запускаємо їх
         self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
     }
-  
+    
     //MARK: спавнимо ворогів, кількість
     fileprivate func spawnSpiralOfEnemis() {
         //Загружаємо атлас1 картинок ворогів
@@ -108,7 +134,7 @@ class GameScene: ParentScene {
             
             //Час який буде чекати самольот для спавну
             let waitAction = SKAction.wait(forDuration: 1.0)
-            let spawnEnemy = SKAction.run { [unowned self] in 
+            let spawnEnemy = SKAction.run { [unowned self] in
                 //Спочатку відсортируємо масив
                 let textureNames = textureAtlas.textureNames.sorted()
                 //Створюємо текстуру по числу з папки з фото
@@ -164,7 +190,7 @@ class GameScene: ParentScene {
         
     }
     
-    //MARK: настройка фону 
+    //MARK: настройка фону
     fileprivate func configureStartScene() {
         
         let screenCenterPoint = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -179,7 +205,7 @@ class GameScene: ParentScene {
         //Створюємо остров1:
         let island1 = Island.populate(at: CGPoint(x: 100, y: 200))
         self.addChild(island1)
-         
+        
         //Створюємо остров2:
         let island2 = Island.populate(at: CGPoint(x: self.size.width - 100, y: self.size.height - 200))
         self.addChild(island2)
@@ -190,19 +216,28 @@ class GameScene: ParentScene {
         self.addChild(player)
     }
     
+    //MARK: Видаляє ноди
     //Метод відпрацьовується після того коли вся фізика закінчилась:
     override func didSimulatePhysics() {
         //Викликаємо метод який перевіряє позицію
         player.checkPosition()
         
-        //Перебирає ноди з іменем(зробим перевірку, якщо ноди по у = менше -100 то просто будем їх видаляти):
+        //Перебирає ноди з іменем(зробим перевірку, якщо ноди по у = менше -50 то просто будем їх видаляти):
         enumerateChildNodes(withName: "sprite") { (node, stop) in
-            if node.position.y <= -100 {
+            if node.position.y <= -50 {
                 node.removeFromParent()
-                //Перевіримо чи будуть пони видалятись
-//                if node.isKind(of: PowerUp.self) {
-//                    print("PowerUp is removed from scene")
-//                }
+            }
+        }
+        
+        enumerateChildNodes(withName: "greenPowerUp") { (node, stop) in
+            if node.position.y <= -50 {
+                node.removeFromParent()
+            }
+        }
+        
+        enumerateChildNodes(withName: "bluePowerUp") { (node, stop) in
+            if node.position.y <= -50 {
+                node.removeFromParent()
             }
         }
         
@@ -214,7 +249,7 @@ class GameScene: ParentScene {
         }
     }
     
-    //MARK: вистріл
+    //MARK: Вистріл
     //Метод який буде створювати вистріл
     fileprivate func playerFire() {
         let shot = YellowShot()
@@ -267,6 +302,7 @@ extension GameScene: SKPhysicsContactDelegate {
         let contectPoint = contact.contactPoint
         //Взрив створюємо в точці доторку
         explosion?.position = contectPoint
+        explosion?.zPosition = 12
         //Чекаємо 1 сек
         let waitForExplosionAction = SKAction.wait(forDuration: 1.0)
         
@@ -276,16 +312,24 @@ extension GameScene: SKPhysicsContactDelegate {
         switch contactCategory {
             
         case [.enemy, .player]:
-            print("enemy vs player")
-            
+
             //Зробимо так щоб при доторканні до нас, вороги пропадали. Шукаємо ворога, під яким body він буде
             if contact.bodyA.node?.name == "sprite" {
-                //Якщо це ворог то видаляємо його з екрану
-                contact.bodyA.node?.removeFromParent()
+                
+                //Якщо батько ще не == nil то заходимо в цикл
+                if contact.bodyA.node?.parent != nil {
+                    //Якщо це ворог то видаляємо його з екрану
+                    contact.bodyA.node?.removeFromParent()
+                    //Зменшуємо життя на 1
+                    lives -= 1
+                }
             } else {
-                //Якщо bodyA не ворог то видаляємо bodyB
-                contact.bodyB.node?.removeFromParent()
+                if contact.bodyB.node?.parent != nil {
+                    contact.bodyB.node?.removeFromParent()
+                    lives -= 1
+                }
             }
+            
             //Добавляємо взрив коли буде торкання
             addChild(explosion!)
             //Робимо затримку та видаляємо explosion
@@ -294,21 +338,60 @@ extension GameScene: SKPhysicsContactDelegate {
                 explosion?.removeFromParent()
             }
             
-        case [.powerUp, .player]: print("powerUp vs player")
+            //Якщо життя буде дорівнювати 0, то буде нова сцена
+            if lives == 0 {
+                //Створимо екземпляр класу
+                let gameOverScene = GameOverScene(size: self.size)
+                //Як вона буде відтворюватись
+                gameOverScene.scaleMode = .aspectFit
+                //Створимо перехід
+                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+                //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
+                self.scene!.view?.presentScene(gameOverScene, transition: transition)
+            }
             
+        case [.powerUp, .player]:
+            
+            if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
+                
+                if contact.bodyA.node?.name == "greenPowerUp" {
+                    contact.bodyA.node?.removeFromParent()
+                    lives = 3
+                    player.greenPoweUp()
+                } else if contact.bodyB.node?.name == "greenPowerUp" {
+                    contact.bodyB.node?.removeFromParent()
+                    lives = 3
+                    player.greenPoweUp()
+                }
+                
+                if contact.bodyA.node?.name == "bluePowerUp" {
+                    contact.bodyA.node?.removeFromParent()
+                    lives += 1
+                    player.bluePoweUp()
+                } else if contact.bodyB.node?.name == "bluePowerUp" {
+                    contact.bodyB.node?.removeFromParent()
+                    lives += 1
+                    player.bluePoweUp()
+                }
+            }
+                      
         case [.enemy, .shot]:
-            print("enemy vs shot")
             
-            //Якщо попадаємо по ворогові то пуля та ворог пропадають
-            contact.bodyA.node?.removeFromParent()
-            contact.bodyB.node?.removeFromParent()
-            
-            //Добавляємо взрив коли буде торкання
-            addChild(explosion!)
-            //Робимо затримку та видаляємо explosion
-            self.run(waitForExplosionAction) {
-                //Видаляємо наш explosion
-                explosion?.removeFromParent()
+            //Якщо батько ще не == nil то заходимо в цикл
+            if contact.bodyA.node?.parent != nil {
+                //Якщо попадаємо по ворогові то пуля та ворог пропадають
+                contact.bodyA.node?.removeFromParent()
+                contact.bodyB.node?.removeFromParent()
+                //Додаємо до очків 5
+                hud.score += 5
+                
+                //Добавляємо взрив коли буде торкання
+                addChild(explosion!)
+                //Робимо затримку та видаляємо explosion
+                self.run(waitForExplosionAction) {
+                    //Видаляємо наш explosion
+                    explosion?.removeFromParent()
+                }
             }
             
         default: preconditionFailure("Unable to detect collision category")
@@ -327,19 +410,19 @@ extension GameScene: SKPhysicsContactDelegate {
 //OperationQueue.current! - це про багатопоточність
 
 /* ось ці зміни з масками в методі didBegin
-//Перевіряємо які бітові маски доторкаються
-let bodyA = contact.bodyA.categoryBitMask
-let bodyB = contact.bodyB.categoryBitMask
-let player = BitMaskCategory.player
-let enemy = BitMaskCategory.enemy
-let shot = BitMaskCategory.shot
-let powerUp = BitMaskCategory.powerUp
-
-//Перевіримо що доторкається
-if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
-    print("enemy vs player")
-}else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
-    print("powerUp vs player")
-}else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
-    print("enemy vs shot")
-}*/
+ //Перевіряємо які бітові маски доторкаються
+ let bodyA = contact.bodyA.categoryBitMask
+ let bodyB = contact.bodyB.categoryBitMask
+ let player = BitMaskCategory.player
+ let enemy = BitMaskCategory.enemy
+ let shot = BitMaskCategory.shot
+ let powerUp = BitMaskCategory.powerUp
+ 
+ //Перевіримо що доторкається
+ if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
+ print("enemy vs player")
+ }else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
+ print("powerUp vs player")
+ }else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
+ print("enemy vs shot")
+ }*/
