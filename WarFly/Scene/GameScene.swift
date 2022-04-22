@@ -10,6 +10,8 @@ import GameplayKit
 
 class GameScene: ParentScene {
     
+    var backgroundMusic: SKAudioNode!
+    
     fileprivate var player: PlayerPlane!
     //Екземпляр
     fileprivate let hud = HUD()
@@ -44,6 +46,20 @@ class GameScene: ParentScene {
     
     //MARK: при запуску апп
     override func didMove(to view: SKView) {
+        
+        //Підгружаємо останні данні
+        gameSettings.loadGameSettings()
+        
+        //Робимо перевірку чи музика дозволина, та на то чи вона вже не включина
+        if gameSettings.isMusic && backgroundMusic == nil {
+            //Створюємо музику
+            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
+                //Запускаємо її
+                backgroundMusic = SKAudioNode(url: musicURL)
+                addChild(backgroundMusic)
+            }
+        }
+        
         //Знімаємо паузу всіх обєктів
         self.scene?.isPaused = false
         
@@ -340,6 +356,10 @@ extension GameScene: SKPhysicsContactDelegate {
             
             //Якщо життя буде дорівнювати 0, то буде нова сцена
             if lives == 0 {
+                //Зберігаємо результат очків який наіграли в масив який створили в GameSettings
+                gameSettings.currentScore = hud.score
+                //Зберігаємо очки
+                gameSettings.saveScores()
                 //Створимо екземпляр класу
                 let gameOverScene = GameOverScene(size: self.size)
                 //Як вона буде відтворюватись
@@ -382,6 +402,11 @@ extension GameScene: SKPhysicsContactDelegate {
                 //Якщо попадаємо по ворогові то пуля та ворог пропадають
                 contact.bodyA.node?.removeFromParent()
                 contact.bodyB.node?.removeFromParent()
+                //Робим перевірку чи isSound == true
+                if gameSettings.isSound {
+                //Запускаємо звук при доторканні
+                self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+                }
                 //Додаємо до очків 5
                 hud.score += 5
                 

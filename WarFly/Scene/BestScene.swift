@@ -10,9 +10,14 @@ import SpriteKit
 class BestScene: ParentScene {
 
     //Вказуємо самі найкращі результати
-    var places = [10, 100, 10000]
+    var places: [Int]!
     
     override func didMove(to view: SKView) {
+        
+        //Підгружаємо дані з GameSettings
+        gameSettings.loadScores()
+        //Передаємо їх в масив
+        places = gameSettings.highscore
         
         //MARK: Заголовок
         //Робимо заголовок(передаємо текст та фото)
@@ -34,10 +39,8 @@ class BestScene: ParentScene {
             addChild(button)
         }
         
-        //Сортируємо масив від більшого до меншого. Ставимо максимум 3 значення в масиві
-        let topPlaces = places.sorted { $0 > $1 }.prefix(3)
         
-        for (index, value) in topPlaces.enumerated() {
+        for (index, value) in places.enumerated() {
             
             let l = SKLabelNode(text: value.description)
             //Задамо колір шрифту

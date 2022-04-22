@@ -38,6 +38,9 @@
 		95189D512811E84A006DD14E /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95189D4F2811E84A006DD14E /* EnemyExplosion.sks */; };
 		95189D522811E84A006DD14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95189D502811E84A006DD14E /* Assets.xcassets */; };
 		95189D552812D29B006DD14E /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D542812D29B006DD14E /* GameOverScene.swift */; };
+		95189D58281302BD006DD14E /* backgroundMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 95189D56281302BD006DD14E /* backgroundMusic.m4a */; };
+		95189D59281302BD006DD14E /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 95189D57281302BD006DD14E /* hitSound.wav */; };
+		95189D5B2813060C006DD14E /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95189D5A2813060C006DD14E /* GameSettings.swift */; };
 		95205BE8280AF7D300D8B1D1 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BE7280AF7D300D8B1D1 /* Shot.swift */; };
 		95205BEA280B006900D8B1D1 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BE9280B006900D8B1D1 /* YellowShot.swift */; };
 		95205BED280B298000D8B1D1 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95205BEC280B298000D8B1D1 /* Assets.swift */; };
@@ -78,6 +81,9 @@
 		95189D4F2811E84A006DD14E /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
 		95189D502811E84A006DD14E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95189D542812D29B006DD14E /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		95189D56281302BD006DD14E /* backgroundMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.m4a; sourceTree = "<group>"; };
+		95189D57281302BD006DD14E /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
+		95189D5A2813060C006DD14E /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		95205BE7280AF7D300D8B1D1 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		95205BE9280B006900D8B1D1 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
 		95205BEC280B298000D8B1D1 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
@@ -116,6 +122,7 @@
 				8DDBA39427D2699B001B0280 /* Island.swift */,
 				95189D3F280EFC56006DD14E /* HUD.swift */,
 				95189D43280F02C3006DD14E /* ButtonNode.swift */,
+				95189D5A2813060C006DD14E /* GameSettings.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -170,6 +177,8 @@
 		95189D41280EFEAD006DD14E /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				95189D56281302BD006DD14E /* backgroundMusic.m4a */,
+				95189D57281302BD006DD14E /* hitSound.wav */,
 				8DDBA37B27D262BE001B0280 /* AppDelegate.swift */,
 				8DDBA38527D262BE001B0280 /* Main.storyboard */,
 				8DDBA38827D262C3001B0280 /* Assets.xcassets */,
@@ -308,7 +317,9 @@
 				95189D3D280CD04B006DD14E /* YellowAmmo.atlas in Resources */,
 				8DDBA38927D262C3001B0280 /* Assets.xcassets in Resources */,
 				95189D3A280CD04B006DD14E /* PlayerPlane.atlas in Resources */,
+				95189D59281302BD006DD14E /* hitSound.wav in Resources */,
 				95189D512811E84A006DD14E /* EnemyExplosion.sks in Resources */,
+				95189D58281302BD006DD14E /* backgroundMusic.m4a in Resources */,
 				8DDBA38C27D262C3001B0280 /* LaunchScreen.storyboard in Resources */,
 				95189D39280CD04B006DD14E /* Enemy_1.atlas in Resources */,
 				95189D3C280CD04B006DD14E /* Enemy_2.atlas in Resources */,
@@ -324,6 +335,7 @@
 			files = (
 				8DDBA38227D262BE001B0280 /* GameScene.swift in Sources */,
 				95205BEA280B006900D8B1D1 /* YellowShot.swift in Sources */,
+				95189D5B2813060C006DD14E /* GameSettings.swift in Sources */,
 				8DDBA39927D281C3001B0280 /* PlayerPlane.swift in Sources */,
 				8DDBA39727D27268001B0280 /* Cloud.swift in Sources */,
 				8DDBA38427D262BE001B0280 /* GameViewController.swift in Sources */,

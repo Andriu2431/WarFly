@@ -9,6 +9,9 @@ import SpriteKit
 
 //Батьківський клас, просто для того щоб не повторювався код
 class ParentScene: SKScene {
+    
+    //Створимо екземпляр класу на GameSettings
+    let gameSettings = GameSettings()
 
     //Получаємо силку на наш екземпляр класу
     let sceneManager = SceneManager.shared

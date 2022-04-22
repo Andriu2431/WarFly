@@ -9,16 +9,27 @@ import SpriteKit
 
 //Кнопка налаштування
 class OptionsScene: ParentScene {
+    
+    var isMusic: Bool!
+    var isSound: Bool!
 
     override func didMove(to view: SKView) {
+        
+        //Підгрузимо дані сюди з GameSettings
+        isMusic = gameSettings.isMusic
+        isSound = gameSettings.isSound
         
         //MARK: Заголовок
         //Робимо заголовок(передаємо текст та фото)
         setHeader(withName: "options", endBackground: "header_background")
         
+        //Будемо міняти фон взалежності від того чи буде музика чи ні
+        let backgroundNameForMusic = isMusic == true ? "music" : "nomusic"
+        let backgroundNameForSound = isSound == true ? "sound" : "nosound"
+        
         //MARK: кнопки
-        createButton(titled: nil, backgroundName: "music", x: self.frame.midX - 50, y: self.frame.midY, name: "music")
-        createButton(titled: nil, backgroundName: "sound", x: self.frame.midX + 50, y: self.frame.midY, name: "sound")
+        createButton(titled: nil, backgroundName: backgroundNameForMusic, x: self.frame.midX - 50, y: self.frame.midY, name: "music")
+        createButton(titled: nil, backgroundName: backgroundNameForSound, x: self.frame.midX + 50, y: self.frame.midY, name: "sound")
         createButton(titled: "back", backgroundName: "button_background", x: self.frame.midX, y: self.frame.midY - 100, name: "back")
     }
     
@@ -46,10 +57,18 @@ class OptionsScene: ParentScene {
         
         //Перевіримо чи прийшов нод нашої кнопки
         if node.name == "music" {
-            print("music")
+            //Будемо міняти з true na false
+            isMusic = !isMusic
+            update(node: node as! SKSpriteNode, property: isMusic)
         } else if node.name == "sound" {
-            print("sound")
+            isSound = !isSound
+            update(node: node as! SKSpriteNode, property: isSound)
         } else if node.name == "back"{
+            //Збережимо наші дані при виході
+            gameSettings.isSound = isSound
+            gameSettings.isMusic = isMusic
+            gameSettings.saveGameSettings()
+            
             //Якщо так то робимо перехід до іншої сцени
             let transition = SKTransition.crossFade(withDuration: 1)
             guard let backScene = backScene else { return }
@@ -57,6 +76,14 @@ class OptionsScene: ParentScene {
             backScene.scaleMode = .aspectFit
             //Створюємо сам перехід, в GameViewController запустимо цю сцену першою
             self.scene!.view?.presentScene(backScene, transition: transition)
+        }
+    }
+    
+    //Метод який буде міняти текстуру кнопки
+    func update(node: SKSpriteNode, property: Bool) {
+        if let name = node.name {
+            //Якщо property що передамо буде true тоді буде включений звук, якщо false тоді виключиний
+            node.texture = property ? SKTexture(imageNamed: name) : SKTexture(imageNamed: "no" + name)
         }
     }
 }
